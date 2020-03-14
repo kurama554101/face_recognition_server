@@ -16,4 +16,7 @@ services:
     runtime: nvidia
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
+    build: 
+      context: ./docker
+      dockerfile: ./custom_backend/Dockerfile.gpu
     container_name: trtis-custom-backend-build-container-gpu
