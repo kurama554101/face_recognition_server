@@ -21,9 +21,6 @@ services:
     entrypoint: "/opt/tensorrtserver/nvidia_entrypoint.sh trtserver 
                   --model-repository=/models --model-control-mode=explicit 
                   --load-model=face_recognition_model
-                  --load-model=mecab_model
-                  --load-model=sample_instance
-                  --load-model=sample_sequence
                   --log-verbose=1" # TODO : Should not set entrypoint, get parameter from commandline
   trtis-client-container:
     image: trtis-client
@@ -35,6 +32,7 @@ services:
     tty: true
     ports:
       - "8501:8501"
+    entrypoint: "bash entry.sh"
   data-uploader-container:
     image: data-uploader
     build: 

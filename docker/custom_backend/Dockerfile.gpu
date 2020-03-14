@@ -12,8 +12,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 ADD ./custom_backend/install_core_packages.sh /workspace/
 ADD ./custom_backend/clone_trtis_custom_backend_sdk.sh /workspace/
 ADD ./custom_backend/build_custom_backend.sh /workspace/
-ADD ./install_script/install_mecab.sh /workspace/
 RUN set -x && \
     bash ./install_core_packages.sh && \
-    bash ./clone_trtis_custom_backend_sdk.sh && \
-    bash ./install_mecab.sh
+    bash ./clone_trtis_custom_backend_sdk.sh
