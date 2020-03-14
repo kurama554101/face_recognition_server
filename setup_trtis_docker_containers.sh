@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "----------start setup script of sample_trtis------------"
+echo "----------start setup script of face recognition server------------"
 
 # check parameter
 BUILD_SERVER=true
@@ -147,4 +147,4 @@ if "${BUILD_SERVER}"; then
     fi
 fi
 
-echo "----------end setup script of sample_trtis------------"
+echo "----------end setup script of face recognition server------------"
