@@ -8,6 +8,8 @@ from model import *
 
 import streamlit as st
 
+data_dict = {}
+
 def setup_ui():
     # setup sidebar
     url_text = st.sidebar.text_input("input url of the inference server", "trtis-server-container")
@@ -43,6 +45,7 @@ def setup_ui():
         with st.spinner('Wait for infer...'):
             result_map = infer(ctx_param, imgs[0].shape, imgs[0].dtype, datas_dict)
         st.success('infer request is completed!')
+        st.write("inference time is " + str(get_process_time(data_dict)) + "[s]")
         
         # draw face boxes
         imgs_with_box = draw_face_box_from_json(orig_imgs, input_size, result_map[corr_id])
@@ -50,7 +53,7 @@ def setup_ui():
         # set images
         st.image(imgs_with_box)
 
-@stop_watch
+@stop_watch(data_dict)
 def infer(ctx_param, shape, dtype, datas_dict, batch_size=1):
     """
     infer function
