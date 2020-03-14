@@ -1,8 +1,9 @@
-# Sample TensorRT Inference Server codes
+# Face Recognition Server
 
 ## Introduction
 
-Sample TensorRT Inference Server(=TRTIS) source codes.
+Face Recognition Server is the service to detect the face in image and recognize someone.
+This service use [TensorRT Inference Server](https://github.com/NVIDIA/tensorrt-inference-server).
 
 ## Environment
 
@@ -14,10 +15,12 @@ Sample TensorRT Inference Server(=TRTIS) source codes.
 
 This repository create the following container.
 
-* Server Container
-* Client Container
-* Custom-Backend Container
-    * This container build the source code of TRTIS CustomInstance.
+| Name | Category | Description |
+|:----:|:----:|:-----|
+|Server Container|Server|Main container in Server|
+|Custom-Backend Container|Server|Build the face recognition model in this container|
+|Data upload Container|Server|Upload the face data into server|
+|Cliend Container|Client|Main container in Client|
 
 ## Setup
 
