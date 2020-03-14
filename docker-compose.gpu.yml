@@ -16,4 +16,15 @@ services:
     runtime: nvidia
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
+    build: 
+      context: ./docker
+      dockerfile: ./custom_backend/Dockerfile.gpu
     container_name: trtis-custom-backend-build-container-gpu
+  data-uploader-container:
+    extends:
+      file: docker-compose.yml
+      service: data-uploader-container
+  trtis-client-container:
+    extends:
+      file: docker-compose.yml
+      service: trtis-client-container
