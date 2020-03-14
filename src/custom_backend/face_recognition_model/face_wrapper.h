@@ -145,6 +145,7 @@ class FaceWrapper {
 
     // util
     std::vector<std::string> split_text(const std::string s, char delim);
+    std::string trim(const std::string& text, const char* trimCharacterList = " \t\v\r\n");
 
     // debug
     const bool kDebugMode = true;

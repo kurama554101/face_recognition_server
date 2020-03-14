@@ -210,7 +210,7 @@ FaceWrapper::registerFaceDatasFromCsv(std::string csv_path, std::string root_fol
       continue;
     }
     std::string csv_file_name = texts[0];
-    std::string face_name = texts[1];
+    std::string face_name = trim(texts[1]);
 
     // create opencv matrix
     auto path = root_folder_path + csv_file_name;
@@ -250,6 +250,19 @@ FaceWrapper::split_text(const std::string s, char delim)
   if (!item.empty())
       elems.push_back(item);
   return elems;
+}
+
+std::string 
+FaceWrapper::trim(const std::string& text, const char* trimCharacterList)
+{
+  std::string result;
+  std::string::size_type left = text.find_first_not_of(trimCharacterList);
+  if (left != std::string::npos)
+  {
+    std::string::size_type right = text.find_last_not_of(trimCharacterList);
+    result = text.substr(left, right - left + 1);
+  }
+  return result;
 }
 
 }  // namespace face_recognition_model
